@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <h3>Baustunden</h3>
+    <div class="column">
+      <table class="table">
+		  <thead class="table header">
+  			<tr>
+  			  <th>Datum</th>
+  			  <th>Beschreibung</th>
+  			  <th>Dauer</th>
+  			  <th>Projekt</th>
+  			  <th>Zuständige</th>
+  			  <th>Bestätigt</th>									  
+		    </tr>
+		  </thead>
+        <tbody>
+          <% @workunits.each do |wu| %>
+            <tr>
+              <%= render wu %>
+            </tr>
+          <% end %>
+          <tr>
+            <td colspan="6">
+              <%= link_to "+ Neuer Eintrag", new_workunit_path%>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          
+          <tr>
+            <% if @workunits.count > 0%>
+            <td colspan="3">Bestätigte Stunden: ???</td>
+            <td colspan="3">Noch nicht Bestätigte Stunden: ???</td>
+            <%else%>
+            <td colspan="6">Keine Baustunden!</td>
+            <%end%>
+          </tr>
+          
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
