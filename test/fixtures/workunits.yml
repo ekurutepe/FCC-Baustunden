@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  performed_at: 2014-11-14
+  duration: 9.99
+  confirmed_at: 2014-11-14 22:34:37
+
+two:
+  performed_at: 2014-11-14
+  duration: 9.99
+  confirmed_at: 2014-11-14 22:34:37

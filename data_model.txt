@@ -1,0 +1,24 @@
+user {
+	name: string
+	email: string
+	password: string
+	
+	projects_as_admin: array[project]
+	workunits: array[workunit]
+}
+
+project {
+	name: string
+	
+	admins: array[user]
+	workunits: array[workunit]
+}
+
+workunit {
+	performed_at: date
+	duration: integer
+	confirmed_at: date
+	confirmed_by: user
+	performed_by: user
+	project: project
+}
