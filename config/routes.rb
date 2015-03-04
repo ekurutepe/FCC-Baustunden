@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
+  get 'workunits/index'
+
+  get 'workunits/new'
+
   root to: 'visitors#index'
   devise_for :users
   resources :users
+  resources :projects
+  resources :workunits
+  
+  get "/dashboard", :to => "dashboard#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
