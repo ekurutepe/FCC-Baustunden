@@ -5,7 +5,7 @@ class Workunit < ActiveRecord::Base
   
   validates :performed_by, presence: true
   
-
+  validates :confirmed_by, inclusion: { in: ->(workunit) {workunit.project.admins}}
   
   def confirmed 
     return !confirmed_at.nil?
