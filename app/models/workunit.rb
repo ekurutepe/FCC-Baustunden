@@ -4,4 +4,8 @@ class Workunit < ActiveRecord::Base
   belongs_to :project
   
   validates :performed_by, presence: true
+  
+  def confirmed 
+    return !confirmed_at.nil?
+  end
 end
