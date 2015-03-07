@@ -40,7 +40,6 @@ gem 'rspec', '~> 3.0'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'sqlite3'
-  gem 'debugger'
 end
 
 group :production do 
