@@ -6,4 +6,13 @@ class User < ActiveRecord::Base
          
   has_many :workunits, :foreign_key => "performed_by_user_id"
   has_and_belongs_to_many :projects, :join_table => "project_admins" 
+  
+  def total_hours(confirmed) 
+    hours = self.workunits.select{|w| w.confirmed == confirmed}.map{|w| w.duration}.reduce(:+)
+    unless hours.nil?
+      return hours
+    else
+      return 0
+    end
+  end
 end
