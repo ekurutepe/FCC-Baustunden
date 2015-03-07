@@ -1,0 +1,24 @@
+<% if workunit.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(workunit.errors.count, "error") %> prohibited this workunit from being saved:</h2>
+ 
+    <ul>
+    <% workunit.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(workunit) do |f| %>
+
+  <p><%= f.label "Datum:"%></p>
+  <p><%= f.date_field :performed_at, {class: "datepicker"} %></p>
+  <p><%= f.label "Beschreibung:"%></p>
+  <p><%= f.text_field :description %></p>
+  <p><%= f.label "Dauer (Std):"%></p>
+  <p><%= f.text_field :duration %></p>
+  <p><%= f.label "Projekt:"%></p>
+  <p><%= f.collection_select(:project_id, Project.all, :id, :name ) %></p>
+  <p><%= f.submit %></p>
+  
+<% end %>

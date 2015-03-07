@@ -13,5 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require pickadate/picker 
+//= require pickadate/picker.date 
+//= require pickadate/translations/de_DE
 //= require bootstrap-sprockets
 //= require_tree .
