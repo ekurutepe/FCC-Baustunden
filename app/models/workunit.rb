@@ -5,6 +5,8 @@ class Workunit < ActiveRecord::Base
   
   validates :performed_by, presence: true
   
+
+  
   def confirmed 
     return !confirmed_at.nil?
   end

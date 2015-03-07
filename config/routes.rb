@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'projects/index'
+
+  get 'projects/new'
+
   get 'workunits/index'
 
   get 'workunits/new'

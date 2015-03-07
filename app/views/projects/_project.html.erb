@@ -1,0 +1,9 @@
+<td><%= link_to project.name, project %></td>
+<td><%= project.total_hours %></td>
+<td><%= project.admin_names %></td>  
+</td>
+<% if current_user.admin?%>
+<td>
+  <%= link_to "Verwalten", edit_project_path(project)%>
+</td>
+<%end%>

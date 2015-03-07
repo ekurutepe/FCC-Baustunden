@@ -1,0 +1,6 @@
+<h1><%= @project.name%></h1>
+<p>Admins: <% @project.admins.each do |a| %>
+  <%= a.email%>
+  <%end%>
+</p>
+<p>Hours spent: <%= @project.total_hours %></p>

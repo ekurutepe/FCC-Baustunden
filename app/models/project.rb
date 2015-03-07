@@ -5,7 +5,17 @@ class Project < ActiveRecord::Base
   validates :admins, presence: true
   
   def total_hours 
-    return self.workunits.reject{|w| !w.confirmed}.map{|w| w.duration}.reduce(:+)
+    unless self.workunits.count == 0
+      hours = self.workunits.reject{|w| !w.confirmed}.map{|w| w.duration}.reduce(:+)
+      
+      unless hours.nil?
+        return hours
+      else
+        return 0
+      end
+    else 
+      return 0
+    end
   end
   
   def admin_names

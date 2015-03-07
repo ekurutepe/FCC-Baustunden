@@ -1,4 +1,14 @@
 <div class="container">
+  
+  <%if current_user.admin? %>
+  <h1>I'm an Admin!</h1>
+  <ul>
+    <li><%= link_to "Meine Baustunden", dashboard_path %></li>
+    <li><%= link_to "Vereinsübersicht", dashboard_path %></li>
+    <li><%= link_to "Projekte Verwalten", projects_path %></li>
+    <li><%= link_to "Mitglieder Verwalten", users_path %></li>    
+  </ul>
+  <%end%>
   <div class="row">
     <h3>Baustunden</h3>
     <div class="column">
