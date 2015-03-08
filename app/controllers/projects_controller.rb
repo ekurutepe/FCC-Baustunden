@@ -1,9 +1,23 @@
 class ProjectsController < ApplicationController
+before_filter :authenticate_user!
+
   def index
     @projects = Project.all
   end
 
   def new
+    @project = Project.new()
+  end
+  
+  def create
+    project = Project.new(project_params)
+    admin_ids = params[:project][:admin_ids].reject!(&:blank?)
+    unless admin_ids.empty?
+      admins = admin_ids.map{|x| User.find_by_id(x)}
+      project.admins = admins
+      project.save
+    end
+    redirect_to projects_path
   end
   
   def edit
@@ -17,9 +31,9 @@ class ProjectsController < ApplicationController
   def update
     project = Project.find(params[:id])
     project.update!(project_params)
-    admin_ids = params[:admin_ids]
+    admin_ids = params[:project][:admin_ids]
     unless admin_ids.nil?
-      admins = User.find_all_by_id(admin_id)
+      admins = admin_ids.map{|x| User.find_by_id(x)}
       project.admins = admins
       project.save
     end

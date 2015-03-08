@@ -18,6 +18,14 @@
               <%= render project %>
             </tr>
           <% end %>
+          <% if current_user.admin?%>
+          <tr>
+            <td colspan="6">
+              <%= link_to "+ Neues Projekt", new_project_path%>
+            </td>
+          </tr>
+          <% end %>
+          
         </tbody>
       </table>
     </div>

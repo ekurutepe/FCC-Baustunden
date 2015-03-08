@@ -1,5 +1,7 @@
 <%= form_for(project) do |f| %>
+  <p><%= f.label 'Projektname' %></p>
   <p><%= f.text_field :name %></p>
+  <p><%= f.label 'Projektleiter' %></p>
   <p><%= f.collection_select(:admin_ids, User.all, :id, :email, {}, {:multiple => true}) %></p>
   <!-- <p><%= options_from_collection_for_select(User.all, :id, :email) %></p> -->
   <p><%= f.submit %></p>
