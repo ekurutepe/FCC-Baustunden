@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'projects/index'
-
-  get 'projects/new'
-
-  get 'workunits/index'
-
-  get 'workunits/new'
-
-  root to: 'visitors#index'
+  root to: 'dashboard#index'
   devise_for :users
   resources :users
   resources :projects
