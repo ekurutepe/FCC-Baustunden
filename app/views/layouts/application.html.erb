@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<div class="header">
 <h1><%= link_to 'Baustunden Automat', dashboard_path %></h1>
 <% if user_signed_in? %>
   <li>
@@ -18,15 +19,22 @@
   <%= link_to('Login', new_user_session_path)  %>  
   </li>
 <% end %>
+</div>
 
+<div class="container">
+  <div class="row">
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
 <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
-	   
-<%= yield %>
+  </div>
+  
+  <div class="row">
+    <%= yield %>
+  </div>
+</div>
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>

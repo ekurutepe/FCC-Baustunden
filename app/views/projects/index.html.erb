@@ -1,33 +1,30 @@
-<div class="container">
-  <div class="row">
-    <h3>Projekte</h3>
-    <div class="column">
-      <table class="table">
-  		  <thead class="table header">
-    			<tr>
-    			  <th>Projekt</th>
-    			  <th>Stunden (gesamt)</th>
-    			  <th>Projektleiter</th>
-            <th></th>
-  		    </tr>
-  		  </thead>
-        
-        <tbody>
-          <% @projects.each do |project| %>
-            <tr>
-              <%= render project %>
-            </tr>
-          <% end %>
-          <% if current_user.admin?%>
-          <tr>
-            <td colspan="6">
-              <%= link_to "+ Neues Projekt", new_project_path%>
-            </td>
-          </tr>
-          <% end %>
-          
-        </tbody>
-      </table>
-    </div>
-  </div>
+
+<h3>Projekte</h3>
+<div class="column">
+  <table class="table">
+	  <thead class="table header">
+			<tr>
+			  <th>Projekt</th>
+			  <th>Stunden (gesamt)</th>
+			  <th>Projektleiter</th>
+        <th></th>
+	    </tr>
+	  </thead>
+    
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <%= render project %>
+        </tr>
+      <% end %>
+      <% if current_user.admin?%>
+      <tr>
+        <td colspan="6">
+          <%= link_to "+ Neues Projekt", new_project_path%>
+        </td>
+      </tr>
+      <% end %>
+      
+    </tbody>
+  </table>
 </div>

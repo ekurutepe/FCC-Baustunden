@@ -3,4 +3,8 @@
 <td><%= workunit.description%></td>
 <td><%= workunit.duration%></td>
 <td><%= workunit.project.name%></td>
-<td><%= link_to "Bestätigen", confirm_workunit_path(workunit) %> / <%= link_to "Ablehnen", deny_workunit_path(workunit) %></td>
+<td>
+  <% if show_actions%>
+  <%= link_to "Bestätigen", confirm_workunit_path(workunit) %> / <%= link_to "Ablehnen", deny_workunit_path(workunit) %>
+  <% end %>
+</td>

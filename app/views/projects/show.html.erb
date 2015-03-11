@@ -1,6 +1,49 @@
-<h1><%= @project.name%></h1>
-<p>Admins: <% @project.admins.each do |a| %>
-  <%= a.email%>
-  <%end%>
-</p>
-<p>Hours spent: <%= @project.total_hours %></p>
+
+<div class="row">
+    <h1><%= @project.name%></h1>
+</div>
+
+<div class="row">
+  <p>Admins: <% @project.admins.each do |a| %>
+    <%= a.email%>
+    <%end%>
+  </p>
+</div>
+
+<div class="row">
+  <h3>Baustunden</h3>
+  <div class="column">
+    <table class="table">
+	  <thead class="table header">
+			<tr>
+			  <th>Datum</th>
+        <th>Mitglied</th>
+			  <th>Beschreibung</th>
+			  <th>Dauer</th>
+			  <th>Projekt</th>
+			  <th></th>									  
+	    </tr>
+	  </thead>
+      <tbody>
+        <% @project.workunits.each do |workunit| %>
+          <tr>
+            <%= render partial: "workunits/workunit_to_confirm", locals: {workunit: workunit, show_actions: false} %>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+      
+        <tr>
+          <% unless @project.workunits.count > 0%>
+          <td colspan="6">Keine Baustunden</td>
+          <%end%>
+        </tr>
+      
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+<p>Total Hours spent: <%= @project.total_hours %></p>
+</div>

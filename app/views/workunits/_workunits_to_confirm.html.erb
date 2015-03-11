@@ -15,7 +15,7 @@
       <tbody>
         <% workunits.each do |workunit| %>
           <tr>
-            <%= render partial: "workunits/workunit_to_confirm", locals: {workunit: workunit} %>
+            <%= render partial: "workunits/workunit_to_confirm", locals: {workunit: workunit, show_actions: true} %>
           </tr>
         <% end %>
       </tbody>
