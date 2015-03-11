@@ -1,6 +1,6 @@
 #TODO List for Baustunden 
 
-- [ ] Localize Signup/Login forms
+- [✓] Localize Signup/Login forms
 - [ ] Add Name to Signup form
 - [ ] Users should be able to confirm workunits for the projects they lead
 - [ ] Admins should be able to see an overview dashboard of the whole club
