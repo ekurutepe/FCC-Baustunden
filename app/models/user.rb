@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
       return 0
     end
   end
+  
+  def workunits_to_confirm
+    workunits = self.projects.map{|p| p.workunits.reject{|w| w.confirmed }}.flatten
+  end
 end

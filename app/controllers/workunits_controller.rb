@@ -26,6 +26,24 @@ before_filter :authenticate_user!
 
   end
   
+  def confirm
+  
+    wu = Workunit.find_by_id(params[:id])
+    
+    if wu.project.admins.include?(current_user)
+      wu.confirmed_by = current_user
+      wu.confirmed_at = DateTime.current()
+      wu.save
+    end
+    
+    redirect_to dashboard_path
+    
+  end
+  
+  def deny
+    
+  end
+  
   def workunit_params
     params.require(:workunit).permit(:description, :performed_at, :project_id, :duration)
   end
