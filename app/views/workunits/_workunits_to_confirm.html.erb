@@ -22,11 +22,8 @@
       <tfoot>
         
         <tr>
-          <% if workunits.count > 0%>
-          <td colspan="3">Bestätigte Stunden: <%= current_user.total_hours(true)%></td>
-          <td colspan="3">Noch nicht Bestätigte Stunden: <%= current_user.total_hours(false)%></td>
-          <%else%>
-          <td colspan="6">Keine Baustunden!</td>
+          <% unless workunits.count > 0%>
+          <td colspan="6">Keine Baustunden zum Bestätigen!</td>
           <%end%>
         </tr>
         

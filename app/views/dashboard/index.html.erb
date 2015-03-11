@@ -9,7 +9,7 @@
     <li><%= link_to "Mitglieder Verwalten", users_path %></li>    
   </ul>
   <%end%>
-  <% if @to_confirm.count %>
+  <% unless @to_confirm.count == 0 %>
   <%= "#{@to_confirm.count} workunits to confirm"%>
   <%= render partial: "workunits/workunits_to_confirm", locals: {workunits: @to_confirm} %>
   <% end%>
