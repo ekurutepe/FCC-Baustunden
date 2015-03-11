@@ -1,0 +1,6 @@
+<td><%= workunit.performed_at%></td>
+<td><%= workunit.performed_by.name%></td>
+<td><%= workunit.description%></td>
+<td><%= workunit.duration%></td>
+<td><%= workunit.project.name%></td>
+<td><%= link_to "Bestätigen", confirm_workunit_path(workunit) %> / <%= link_to "Ablehnen", deny_workunit_path(workunit) %></td>

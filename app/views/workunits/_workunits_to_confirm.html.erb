@@ -1,0 +1,41 @@
+<div class="row">
+  <h3>Baustunden zum Bestätigen</h3>
+  <div class="column">
+    <table class="table">
+	  <thead class="table header">
+			<tr>
+			  <th>Datum</th>
+        <th>Mitglied</th>
+			  <th>Beschreibung</th>
+			  <th>Dauer</th>
+			  <th>Projekt</th>
+			  <th></th>									  
+	    </tr>
+	  </thead>
+      <tbody>
+        <% workunits.each do |workunit| %>
+          <tr>
+            <%= render partial: "workunits/workunit_to_confirm", locals: {workunit: workunit} %>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="6">
+            <%= link_to "+ Neuer Eintrag", new_workunit_path%>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        
+        <tr>
+          <% if workunits.count > 0%>
+          <td colspan="3">Bestätigte Stunden: <%= current_user.total_hours(true)%></td>
+          <td colspan="3">Noch nicht Bestätigte Stunden: <%= current_user.total_hours(false)%></td>
+          <%else%>
+          <td colspan="6">Keine Baustunden!</td>
+          <%end%>
+        </tr>
+        
+      </tfoot>
+    </table>
+  </div>
+</div>
