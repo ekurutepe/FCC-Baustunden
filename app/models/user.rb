@@ -42,4 +42,18 @@ class User < ActiveRecord::Base
   def flight_hour_price
     return 22.20 - self.flight_price_reduction
   end
+  
+  def missing_hours
+    hours = self.total_hours(true).to_i
+    if hours < 0 
+      return (30-hours)
+    else 
+      return 0
+    end
+  end
+  
+  def penalty_payments
+    
+    return self.missing_hours*20
+  end
 end

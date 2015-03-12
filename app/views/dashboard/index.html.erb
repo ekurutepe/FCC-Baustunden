@@ -29,6 +29,9 @@
       <p>Basis: 22,20 €</p>
       <p>Rabatt: <%= number_to_euro(current_user.flight_price_reduction) %></p>
       <p>Mein Flugstundenpreis: <%= number_to_euro(current_user.flight_hour_price) %></p>
+      <% if current_user.missing_hours > 0 %>
+      <p>Strafzahlung (für <%= current_user.missing_hours %> nicht geleistete Baustunden): <%= number_to_euro(current_user.penalty_payments) %></p>
+      <%end%>
     </div>
   </div>
 </div>
