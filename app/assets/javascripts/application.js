@@ -18,3 +18,5 @@
 //= require pickadate/translations/de_DE
 //= require bootstrap-sprockets
 //= require_tree .
+  
+  $(".datepicker").pickadate({hiddenSuffix: ''});
