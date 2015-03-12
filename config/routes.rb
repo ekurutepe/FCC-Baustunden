@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # Example of regular route:
   get 'workunits/:id/confirm' => 'workunits#confirm', as: :confirm_workunit
   get 'workunits/:id/deny' => 'workunits#deny', as: :deny_workunit
+  get 'users/:id/make_admin' => 'users#make_admin', as: :user_make_admin
   
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

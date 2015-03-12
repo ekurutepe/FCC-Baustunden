@@ -11,4 +11,12 @@ class UsersController < ApplicationController
       redirect_to :back, :alert => "Access denied."
     end
   end
+  
+  def make_admin
+    @user = User.find(params[:id])
+    @user.update_attribute :admin, true
+    
+    redirect_to users_path, :notice => "#{@user.name} made admin"
+      
+  end
 end

@@ -3,6 +3,7 @@
 <td><%= user.admin %></td>
 <td>
   <% if current_user.admin?%>
-  <%= link_to 'Verwalten', edit_user_path(user)%>
+  <%= link_to 'Verwalten', edit_user_path(user)%> | 
+  <%= link_to 'Make Admin', user_make_admin_path(user)%>
   <% end %>
 </td>
