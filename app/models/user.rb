@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   
   def missing_hours
     hours = self.total_hours(true).to_i
-    if hours < 0 
+    if hours < 30 
       return (30-hours)
     else 
       return 0
