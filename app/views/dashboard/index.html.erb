@@ -26,7 +26,7 @@
   <div class="row">
     <h3>Flugstundenpreis</h3>
     <div class="column">
-      <p>Basis: 22,20 €</p>
+      <p>Basis: <%= number_to_euro(Constant.base_flight_hour_price) %></p>
       <p>Rabatt: <%= number_to_euro(current_user.flight_price_reduction) %></p>
       <p>Mein Flugstundenpreis: <%= number_to_euro(current_user.flight_hour_price) %></p>
       <% if current_user.missing_hours > 0 %>

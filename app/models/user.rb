@@ -23,30 +23,30 @@ class User < ActiveRecord::Base
   def flight_price_reduction
     hours = self.total_hours(true).to_i
     
-    if(hours < 30) 
+    if(hours < Constant.required_hours) 
       return 0
     else
-      hours = hours - 30 
+      hours = hours - Constant.required_hours 
       
-      reduction_level = (hours/15).floor
+      reduction_level = (hours/Constant.reduction_step_size).floor
       
-      unless reduction_level > 10
-        return reduction_level * 1.5
+      unless reduction_level > Constant.max_reduction_level
+        return reduction_level * Constant.reduction_per_step
       else 
-        return 11 * 1.5
+        return (Constant.max_reduction_level+1) * Constant.reduction_per_step
       end
       
     end
   end
   
   def flight_hour_price
-    return 22.20 - self.flight_price_reduction
+    return Constant.base_flight_hour_price - self.flight_price_reduction
   end
   
   def missing_hours
     hours = self.total_hours(true).to_i
-    if hours < 30 
-      return (30-hours)
+    if hours < Constant.required_hours 
+      return (Constant.required_hours-hours)
     else 
       return 0
     end
@@ -54,6 +54,6 @@ class User < ActiveRecord::Base
   
   def penalty_payments
     
-    return self.missing_hours*20
+    return self.missing_hours*Constant.penalty_per_missing_hour
   end
 end
