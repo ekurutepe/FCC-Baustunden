@@ -10,9 +10,17 @@
   </ul>
   <%end%>
   <% unless @to_confirm.count == 0 %>
-  <%= "#{@to_confirm.count} workunits to confirm"%>
-  <%= render partial: "workunits/workunits_to_confirm", locals: {workunits: @to_confirm} %>
+  <div class="row">
+    <h3>Baustunden zum Bestätigen</h3>
+    <div class="column">
+      <%= render partial: "workunits/workunits_to_confirm", locals: {workunits: @to_confirm} %>
+    </div>
+  </div>
   <% end%>
-
-  <%= render partial: "workunits/user_workunits", locals: {workunits: @workunits} %>
+  <div class="row">
+    <h3>Meine Baustunden</h3>
+    <div class="column">
+      <%= render partial: "workunits/user_workunits", locals: {workunits: @workunits} %>
+    </div>
+  </div>
 </div>
