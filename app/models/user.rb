@@ -19,4 +19,27 @@ class User < ActiveRecord::Base
   def workunits_to_confirm
     workunits = self.projects.map{|p| p.workunits.reject{|w| w.confirmed }}.flatten
   end
+  
+  def flight_price_reduction
+    hours = self.total_hours(true).to_i
+    
+    if(hours < 30) 
+      return 0
+    else
+      hours = hours - 30 
+      
+      reduction_level = (hours/15).floor
+      
+      unless reduction_level > 10
+        return reduction_level * 1.5
+      else 
+        return 11 * 1.5
+      end
+      
+    end
+  end
+  
+  def flight_hour_price
+    return 22.20 - self.flight_price_reduction
+  end
 end
