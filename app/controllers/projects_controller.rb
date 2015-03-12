@@ -17,7 +17,7 @@ before_filter :authenticate_user!
       project.admins = admins
       project.save
     end
-    redirect_to projects_path
+    redirect_to projects_path, :notice => "Created #{project.name}"
   end
   
   def edit
@@ -31,13 +31,13 @@ before_filter :authenticate_user!
   def update
     project = Project.find(params[:id])
     project.update!(project_params)
-    admin_ids = params[:project][:admin_ids]
+    admin_ids = params[:project][:admin_ids].reject!(&:blank?)
     unless admin_ids.nil?
       admins = admin_ids.map{|x| User.find_by_id(x)}
       project.admins = admins
       project.save
     end
-    redirect_to projects_path
+    redirect_to projects_path, :notice => "Updated #{project.name}"
   end
   
   def project_params

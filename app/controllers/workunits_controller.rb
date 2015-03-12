@@ -19,7 +19,7 @@ before_filter :authenticate_user!
     workunit.project = project
     
     if workunit.save
-      redirect_to dashboard_path
+      redirect_to dashboard_path, :notice => "Baustunden eingetragen. Ein Projektleiter muss sie bestätigen bevor sie wirksam werden"
     else 
       redirect_to new_workunit_path(workunit)
     end
@@ -36,7 +36,7 @@ before_filter :authenticate_user!
       wu.save
     end
     
-    redirect_to dashboard_path
+    redirect_to dashboard_path, :notice => "Baustunden wurden bestätigt."
     
   end
   
