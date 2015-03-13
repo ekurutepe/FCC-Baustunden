@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'club_overview/index'
+  get 'club_overview/index', as: :club_overview
 
   root to: 'dashboard#index'
   devise_for :users

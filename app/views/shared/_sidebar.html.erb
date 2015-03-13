@@ -2,7 +2,7 @@
 <ul class="nav nav-sidebar">
   <li><%= nav_link_to "Meine Baustunden", dashboard_path %></li>
   <%if current_user.try(:admin?) %>
-  <li><%= nav_link_to "Vereinsübersicht", dashboard_path %></li>
+  <li><%= nav_link_to "Vereinsübersicht", club_overview_path %></li>
   <li><%= nav_link_to "Projekte Verwalten", projects_path %></li>
   <li><%= nav_link_to "Mitglieder Verwalten", users_path %></li>    
   <%end%>
