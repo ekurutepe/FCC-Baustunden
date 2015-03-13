@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'club_overview/index'
+
   root to: 'dashboard#index'
   devise_for :users
   resources :users
