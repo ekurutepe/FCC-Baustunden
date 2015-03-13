@@ -2,7 +2,7 @@
 <td><%= link_to user.email, user %></td>
 <td><%= user.admin %></td>
 <td>
-  <% if current_user.admin?%>
+  <% if current_user.try(:admin?)%>
   <%= link_to 'Verwalten', edit_user_path(user)%> | 
   <%= link_to 'Make Admin', user_make_admin_path(user)%>
   <% end %>

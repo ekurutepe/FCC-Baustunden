@@ -17,7 +17,7 @@
           <%= render project %>
         </tr>
       <% end %>
-      <% if current_user.admin?%>
+      <% if current_user.try(:admin?)%>
       <tr>
         <td colspan="6">
           <%= link_to "+ Neues Projekt", new_project_path%>
