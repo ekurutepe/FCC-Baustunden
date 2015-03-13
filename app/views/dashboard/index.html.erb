@@ -1,37 +1,25 @@
-<div class="container">
-  
-  <%if current_user.admin? %>
-  <h1>I'm an Admin!</h1>
-  <ul>
-    <li><%= link_to "Meine Baustunden", dashboard_path %></li>
-    <li><%= link_to "Vereinsübersicht", dashboard_path %></li>
-    <li><%= link_to "Projekte Verwalten", projects_path %></li>
-    <li><%= link_to "Mitglieder Verwalten", users_path %></li>    
-  </ul>
-  <%end%>
-  <% unless @to_confirm.count == 0 %>
-  <div class="row">
-    <h3>Baustunden zum Bestätigen</h3>
-    <div class="column">
-      <%= render partial: "workunits/workunits_to_confirm", locals: {workunits: @to_confirm} %>
-    </div>
+<% unless @to_confirm.count == 0 %>
+<div class="row">
+  <h3>Baustunden zum Bestätigen</h3>
+  <div class="column">
+    <%= render partial: "workunits/workunits_to_confirm", locals: {workunits: @to_confirm} %>
   </div>
-  <% end%>
-  <div class="row">
-    <h3>Meine Baustunden</h3>
-    <div class="column">
-      <%= render partial: "workunits/user_workunits", locals: {workunits: @workunits} %>
-    </div>
+</div>
+<% end%>
+<div class="row">
+  <h3>Meine Baustunden</h3>
+  <div class="column">
+    <%= render partial: "workunits/user_workunits", locals: {workunits: @workunits} %>
   </div>
-  <div class="row">
-    <h3>Flugstundenpreis</h3>
-    <div class="column">
-      <p>Basis: <%= number_to_euro(Constant.base_flight_hour_price) %></p>
-      <p>Rabatt: <%= number_to_euro(current_user.flight_price_reduction) %></p>
-      <p>Mein Flugstundenpreis: <%= number_to_euro(current_user.flight_hour_price) %></p>
-      <% if current_user.missing_hours > 0 %>
-      <p>Strafzahlung (für <%= current_user.missing_hours %> nicht geleistete Baustunden): <%= number_to_euro(current_user.penalty_payments) %></p>
-      <%end%>
-    </div>
+</div>
+<div class="row">
+  <h3>Flugstundenpreis</h3>
+  <div class="column">
+    <p>Basis: <%= number_to_euro(Constant.base_flight_hour_price) %></p>
+    <p>Rabatt: <%= number_to_euro(current_user.flight_price_reduction) %></p>
+    <p>Mein Flugstundenpreis: <%= number_to_euro(current_user.flight_hour_price) %></p>
+    <% if current_user.missing_hours > 0 %>
+    <p>Strafzahlung (für <%= current_user.missing_hours %> nicht geleistete Baustunden): <%= number_to_euro(current_user.penalty_payments) %></p>
+    <%end%>
   </div>
 </div>
